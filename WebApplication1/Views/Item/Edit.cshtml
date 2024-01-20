@@ -26,12 +26,19 @@
             <input asp-for="Title" class="form-control" />
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
+       
         <div class="mb-4">
             <label asp-for="categoryId"></label>
             <select asp-for="categoryId" class="form-control" asp-items="@ViewBag.CategoryList">
             </select>
             <span asp-validation-for="categoryId" class="text-danger"></span>
         </div>
+        <div>
+            <input type="file" asp-for="clientFile" onchange="loadFile(event)" />
+            <img id="myImg" height="200" />
+
+        </div>
+       
         <button type="submit" class="btn btn-success">save</button>
         <a asp-action="Index" asp-controller="Item" class="btn btn-info">back to Items</a>
     </div>
@@ -40,4 +47,5 @@
 </form>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+ 
 }

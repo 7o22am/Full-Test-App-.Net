@@ -2,6 +2,7 @@
  
 @{
     ViewData["Title"] = "Index";
+  
 }
 
 
@@ -43,6 +44,9 @@
                 Category
             </th>
             <th>
+                Image
+            </th>
+            <th>
                 CreatedDate
             </th>
            
@@ -67,6 +71,9 @@
                 <td>
                     @item.Category?.Name.ToString()
                    
+                </td>
+                <td>
+                    <img  src="~/images/@item.ImgPath" style="width:48px" class="img-thumbnail" />
                 </td>
                 <td>
                     @item.CreatedDate

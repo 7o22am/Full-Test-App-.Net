@@ -1,18 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Migrations;
 using WebApplication1.Models;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize]
     public class ItemController : Controller
     {
-        public ItemController(AppDbContext db)
+        public ItemController(AppDbContext db ,  IHostingEnvironment host)
         {
-            _db = db;   
+            _db = db;
+            _host = host;
         }
+        private readonly IHostingEnvironment _host;
         private readonly AppDbContext _db;
         public IActionResult Index()
         {
@@ -32,8 +37,18 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult New(Item item )
         {
-            if (ModelState.IsValid) { 
-            _db.items.Add(item);
+            if (ModelState.IsValid) {
+                string fileName = string.Empty;
+                if (item.clientFile != null)
+                {
+                    string myUpload = Path.Combine(_host.WebRootPath, "images");
+                    fileName = item.clientFile.FileName;
+                    string fullPath = Path.Combine(myUpload, fileName);
+                    item.clientFile.CopyTo(new FileStream(fullPath, FileMode.Create));
+                    item.ImgPath = fileName;
+                }
+
+                _db.items.Add(item);
             _db.SaveChanges();
             TempData["successData"] = "Item has been added successfully";
             return RedirectToAction("Index");

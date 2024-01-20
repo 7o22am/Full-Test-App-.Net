@@ -6,6 +6,8 @@ namespace WebApplication1.Models
 {
     public class Item
     {
+ 
+
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Name is required.")]
@@ -20,5 +22,11 @@ namespace WebApplication1.Models
         [ForeignKey("Category")]
         public int categoryId {  get; set; }  
         public Categorys? Category { get; set; }
+
+        public string? ImgPath { get; set; }
+
+        [NotMapped]
+        public IFormFile clientFile { get; set; }
+
     }
 }
