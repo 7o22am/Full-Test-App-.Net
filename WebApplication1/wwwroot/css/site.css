@@ -20,3 +20,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+.two-line-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.ck {
+    cursor: pointer;
+}

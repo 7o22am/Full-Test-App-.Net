@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Repository;
 using WebApplication1.Repository.Base;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+ 
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("MyConnection")));
+builder.Services.AddHttpClient();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(MainRepository<>));
+
+builder.Services.AddTransient<IEmailSender, ClsEmailConf>();
+ 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,6 +44,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.UseEndpoints(endpoint => endpoint.MapRazorPages());
 
 
 app.Run();
