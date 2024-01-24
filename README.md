@@ -1,5 +1,5 @@
 # App 
-> using auth
-> connect to mysql db (crud)
-> movie API
->  
+# using full  authentication 
+# connect to mysql database and make all  crud operation
+# connect to  movie APIs from url 
+# 
