@@ -18,7 +18,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+   
 }
 .two-line-title {
     display: -webkit-box;
@@ -29,9 +30,11 @@ body {
 
 a {
     text-decoration: none;
-    color: white;
+    
 }
 
 .ck {
     cursor: pointer;
 }
+
+ 

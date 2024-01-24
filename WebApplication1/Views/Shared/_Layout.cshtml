@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication1</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -14,7 +14,8 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Ahly  </a>
+                <i class="bi bi-film"> &nbsp;</i>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MOVIES  </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,6 +46,8 @@
                 </div>
             </div>
         </nav>
+   
+    
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -54,7 +57,13 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - H O S S A M - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - H O S S A M - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> 
+            <span class="m-5">
+                <a class="m-2" href="https://www.facebook.com/altawil.hossam" target="_blank">  <i class="bi bi-facebook"></i></a>
+                <a class="m-2" href="https://www.facebook.com/altawil.hossam" target="_blank">  <i class="bi bi-whatsapp"></i> </a>
+                <a class="m-2" href="https://www.facebook.com/altawil.hossam" target="_blank">  <i class="bi bi-tiktok"></i></a>
+                <a class="m-2" href="https://www.facebook.com/altawil.hossam" target="_blank">  <i class="bi bi-instagram"></i></a>
+            </span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

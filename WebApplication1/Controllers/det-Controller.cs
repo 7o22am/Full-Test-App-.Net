@@ -30,6 +30,9 @@ namespace WebApplication1.Controllers
                 MovieResult movieData = JsonConvert.DeserializeObject<MovieResult>(jsonResponse);
 
                 ViewData["ApiResponse"] = movieData; // Store the API response in ViewData
+                                                    // Store the API response in ViewData
+
+               
             }
             else
             {

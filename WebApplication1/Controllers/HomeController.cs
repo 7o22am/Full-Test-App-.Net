@@ -56,6 +56,7 @@ namespace WebApplication1.Controllers
                  MovieModel movieData = JsonConvert.DeserializeObject<MovieModel>(jsonResponse);
                
                 ViewData["ApiResponse"] = movieData; // Store the API response in ViewData
+                ViewData["CurrentId"] = id.ToString();
             }
             else
             {
