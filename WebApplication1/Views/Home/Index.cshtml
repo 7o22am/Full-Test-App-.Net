@@ -1,7 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "API Data";
+    ViewData["Title"] = "Movies";
     var apiResponse = ViewData["ApiResponse"] as MovieModel;
     var img = "https://image.tmdb.org/t/p/w500" as String;
+    var CurrentId = ViewData["CurrentId"] as String;
+
+     
 }
 <div class="row p-5">
     <div class="col-md-4">
@@ -12,60 +15,14 @@
             </p>
         </div>
     </div>
+    
+      
 
   </div>
 
 
-<div class="d-flex flex-row mb-3 justify-content-center p-3">
 
-
-    <div class="p-2  bg-black text-white m-1 ck"> &#8249;
-</div>
-
-    <div class="p-2  bg-black text-white m-1 ck" >
-        <a asp-controller="Home" asp-action="Index" asp-route-Id="1">
-
-            1
-        </a>
-    </div>
-
-    <div class="p-2  bg-black text-white m-1 ck">
-        <a asp-controller="Home" asp-action="Index" asp-route-Id="2">
-
-            2
-        </a>
-    </div>
-
-
-
-<div class="p-2  bg-black text-white m-1 ck">
-    <a asp-controller="Home" asp-action="Index" asp-route-Id="3">
-
-        3
-    </a>
-</div>
-
-<div class="p-2  bg-black text-white m-1 ck">
-    <a asp-controller="Home" asp-action="Index" asp-route-Id="4">
-
-        4
-    </a>
-</div>
-
-<div class="p-2  bg-black text-white m-1 ck">
-    <a asp-controller="Home" asp-action="Index" asp-route-Id="5">
-
-        5
-    </a>
-</div>
-
-
-    <div class="p-2  bg-black text-white m-1 ck"  >&#8250; </div>
-
-
-
-</div>
-
+ 
 
 
     @if (true)
@@ -96,4 +53,75 @@ else
 }
 
 
- 
+<div>
+
+    <div class="d-flex flex-row mb-3 justify-content-center p-3">
+
+        @{
+            int x = int.Parse(CurrentId);
+            if (x >= 1)
+            {
+                x--;
+                <a asp-controller="Home" asp-action="Index" asp-route-Id=@x>
+                    <div class="p-2  bg-black text-white m-1 ck"> &#8249;
+                </a>
+            }
+            else
+            {
+                <a asp-controller="Home" asp-action="Index" asp-route-Id=@x>
+                    <div class="p-2  bg-black text-white m-1 ck"> &#8249;
+                </a>
+            }
+        }
+
+    </div>
+    <a asp-controller="Home" asp-action="Index" asp-route-Id="1">
+        <div class="p-2  bg-black text-white m-1 ck">
+            1
+        </div>
+    </a>
+    <a asp-controller="Home" asp-action="Index" asp-route-Id="2">
+        <div class="p-2  bg-black text-white m-1 ck">
+            2
+        </div>
+    </a>
+
+
+    <a asp-controller="Home" asp-action="Index" asp-route-Id="3">
+        <div class="p-2  bg-black text-white m-1 ck">
+            3
+        </div>
+    </a>
+    <a asp-controller="Home" asp-action="Index" asp-route-Id="4">
+        <div class="p-2  bg-black text-white m-1 ck">
+            4
+        </div>
+    </a>
+
+    <a asp-controller="Home" asp-action="Index" asp-route-Id="5">
+        <div class="p-2  bg-black text-white m-1 ck">
+            5
+        </div>
+    </a>
+
+
+
+    @{
+        int y = int.Parse(CurrentId);
+        if (y < 5)
+        {
+            y++;
+            <a asp-controller="Home" asp-action="Index" asp-route-Id=@y>
+                <div class="p-2  bg-black text-white m-1 ck">&#8250;</div>
+            </a>
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Index" asp-route-Id=@y>
+                <div class="p-2  bg-black text-white m-1 ck">&#8250;</div>
+            </a>
+        }
+    }
+
+
+</div>
