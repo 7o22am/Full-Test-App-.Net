@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Areas.Employess.Models;
 using WebApplication1.Models;
+using WebApplication1.Areas.admin.Models;
 
 namespace WebApplication1.Data
 {
@@ -31,7 +32,7 @@ namespace WebApplication1.Data
            
             base.OnModelCreating(modelBuilder);
         }
-
+        public DbSet<Movie> Movies { get; set; }
     }
 
 

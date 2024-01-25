@@ -1,0 +1,22 @@
+﻿@using WebApplication1.Areas.admin.Models
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   
+}
+
+<div class="container-fluid vert ">
+    <div class="row">
+
+        <div class="col-md-2   ">
+            @await Html.PartialAsync("_adminNavcshtml")
+
+
+
+        </div>
+        <div class="col-md-6 offset-2 ">
+            <h1>order List</h1>
+
+        </div>
+    </div>
+
