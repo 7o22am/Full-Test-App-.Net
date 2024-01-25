@@ -1,0 +1,51 @@
+﻿ @using WebApplication1.Areas.admin.Models;
+@using Microsoft.AspNetCore.Identity;
+@model IdentityUser
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+ 
+@{
+    ViewData["Title"] = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+} 
+
+<form method="post">
+    <div class="border p-3 mt-4 mx-5">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add New User</h2>
+            <div asp-validation-summary="All"></div>
+            <hr />
+        </div>
+    
+        <div class="mb-3">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName"  class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PasswordHash"></label>
+            <input asp-for="PasswordHash" class="form-control" />
+            <span asp-validation-for="PasswordHash" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <br />
+        <hr />
+        <button type="submit" class="btn btn-primary" style="width:180px">Save</button>
+        <a asp-action="Index" asp-area="admin" asp-controller="Users" class="btn btn-secondary" style="width:180px">
+            back to Users
+        </a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial area="admin" name="_ValidationScriptsPartial" />
+}

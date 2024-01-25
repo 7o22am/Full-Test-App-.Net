@@ -1,0 +1,72 @@
+﻿@using WebApplication1.Areas.admin.Models;
+@using Microsoft.AspNetCore.Identity;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<IdentityUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<div class="container-fluid vert ">
+    <div class="row">
+
+        <div class="col-md-2   ">
+            @await Html.PartialAsync("_adminNavcshtml")
+
+
+
+        </div>
+        <div class="col-md-9 offset-1 ">
+            <div class="row m-auto p-4">
+                <div class="col-6">
+                    <h2 class="text-primary">Users Data</h2>
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-area="admin" asp-controller="Users" asp-action="New" class="btn btn-primary">
+                        <i class="bi bi-plus"></i> &nbsp; Add New User
+                    </a>
+
+                </div>
+            </div>
+         
+            <table class="table">
+                <thead>
+                    <tr>
+                    @*     <th scope="col">Id</th> *@
+                        <th scope="col" >Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">EmailConfirmed</th>
+                        <th scope="col">PhoneNumber</th>
+                        <th scope="col">Action</th>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                          @*   <td>@user.Id</td> *@
+                            <td>@user.UserName</td>
+                            <td>@user.Email</td>
+                            <td>@user.EmailConfirmed</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>
+                                <a asp-controller="Users" asp-action="Edit" asp-route-Id="@user.Id" class="btn btn-sm btn-success">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                &nbsp;
+                                <a asp-controller="Users" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash3"></i>
+                                </a>
+                            </td>
+                            
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
