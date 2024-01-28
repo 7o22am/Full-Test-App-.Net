@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
         private IRepository<Categorys> _repository;
         //public IActionResult Index()
         //{
-        //    return View(_repository.GetAll());
+        ////    return View(_repository.GetAll());
         //}
 
         public async Task< IActionResult> Index() {
