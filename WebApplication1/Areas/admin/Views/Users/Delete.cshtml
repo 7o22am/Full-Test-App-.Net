@@ -8,37 +8,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
- 
- 
 
-<form method="post" asp-action="Delete">
-    <div class="border p-3 mt-4 m-5">
-        <div class="row pb-2">
-            <h2 class="text-danger "> Delete  Item</h2>
+<div class="container-fluid vert ">
+    <div class="row">
 
+        <div class="col-md-2   ">
+            @await Html.PartialAsync("_adminNavcshtml")
         </div>
-        <div>
-            <label asp-for="UserName"></label>
-            <input disabled asp-for="UserName" class="form-control" />
-            
-        </div>
-        <div>
-            <label asp-for="Email"></label>
-            <input disabled asp-for="Email" class="form-control" />
-            
-        </div>
-        <div class="">
-            <label asp-for="PhoneNumber"></label>
-            <input disabled asp-for="PhoneNumber" class="form-control" />
-          
-        </div>
-        
-        <button type="submit" class="btn btn-danger my-3 ">Delete</button>
-        <a asp-action="Index" asp-controller="Users" class="btn btn-info mx-1">back to Items</a>
-    </div>
+        <div class="col-md-9  ">
+            <form method="post" asp-action="Delete">
+                <div class="border p-3 mt-4 m-5">
+                    <div class="row pb-2">
+                        <h2 class="text-danger "> Delete  Item</h2>
+
+                    </div>
+                    <div>
+                        <label asp-for="UserName"></label>
+                        <input disabled asp-for="UserName" class="form-control" />
+
+                    </div>
+                    <div>
+                        <label asp-for="Email"></label>
+                        <input disabled asp-for="Email" class="form-control" />
+
+                    </div>
+                    <div class="">
+                        <label asp-for="PhoneNumber"></label>
+                        <input disabled asp-for="PhoneNumber" class="form-control" />
+
+                    </div>
+
+                    <button type="submit" class="btn btn-danger my-3 ">Delete</button>
+                    <a asp-action="Index" asp-controller="Users" class="btn btn-info mx-1">back to Items</a>
+                </div>
 
 
-</form>
+            </form>
+        </div>
+
+
+
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

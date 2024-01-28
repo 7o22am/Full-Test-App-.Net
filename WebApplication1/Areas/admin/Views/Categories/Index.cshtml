@@ -1,4 +1,8 @@
 ﻿@using WebApplication1.Areas.admin.Models
+ 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<ProCategorys>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,7 +10,7 @@
 }
 
 
-<div class="container-fluid vert ">
+<div class="container-fluid vert">
     <div class="row">
 
         <div class="col-md-2   ">
@@ -15,8 +19,74 @@
 
 
         </div>
-        <div class="col-md-6 offset-2 ">
-            <h1>Cat List</h1>
+        <div class="col-md-8 offset-1 ">
+            <div class="container">
+
+                <partial name="_notfy" />
+                <div class="container my-5 ">
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2>Categorys </h2>
+                        </div>
+                        <div class="col-md-6 text-end">
+
+                            <a asp-controller="Categories" asp-action="New" class="btn btn-sm btn-primary">
+                                <i class="bi bi-plus-lg"></i> &nbsp;
+                                Add New Category
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <table class="table m-5">
+                    <thead>
+                        <tr>
+                            <th class="col">
+                                ID
+                            </th>
+                            <th class="col">
+                                Name
+                            </th>
+                             
+                            <th class="col">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                               
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                
+                                <td>
+                                    <a asp-controller="Categories" asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-sm btn-info">
+                                        <i class="bi bi-pencil"></i>
+                                    </a> &nbsp;
+                                    <a asp-controller="Categories" asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash3"></i>
+
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+
+            </div>
            
         </div>
     </div>

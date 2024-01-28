@@ -18,23 +18,24 @@ namespace WebApplication1.Data
         public DbSet<Categorys> Categorys { get; set; }
         public DbSet<Employees> Employees { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Categorys>().HasData(
-                new Categorys() { Id = 1, Name = "Select Category" },
-                new Categorys() { Id = 2, Name = "Computers" },
-                new Categorys() { Id = 3, Name = "Mobiles" },
-                new Categorys() { Id = 4, Name = "Electric machines" },
-                new Categorys() { Id = 5, Name = "Mobile & Electric machines" },
-                new Categorys() { Id = 6, Name = "Mobile & Computers" },
-                new Categorys() { Id = 7, Name = "Mobile & Computers & Electric machines2" }
-                );
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Categorys>().HasData(
+        //        new Categorys() { Id = 1, Name = "Select Category" },
+        //        new Categorys() { Id = 2, Name = "Computers" },
+        //        new Categorys() { Id = 3, Name = "Mobiles" },
+        //        new Categorys() { Id = 4, Name = "Electric machines" },
+        //        new Categorys() { Id = 5, Name = "Mobile & Electric machines" },
+        //        new Categorys() { Id = 6, Name = "Mobile & Computers" },
+        //        new Categorys() { Id = 7, Name = "Mobile & Computers & Electric machines2" }
+        //        );
            
-            base.OnModelCreating(modelBuilder);
-        }
+        //    base.OnModelCreating(modelBuilder);
+        //}
         public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Products> Products { get; set; }
+        public DbSet<ProCategorys> ProCategorys { get; set; }
     }
 
 
