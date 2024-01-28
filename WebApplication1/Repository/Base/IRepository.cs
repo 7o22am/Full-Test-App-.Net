@@ -8,6 +8,7 @@
         Task< T >FinedbyIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
 
+       
         void AddOne(T myItem);
 
         void UpdateOne(T myItem);

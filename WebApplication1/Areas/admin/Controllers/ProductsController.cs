@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Areas.admin.Models;
 using WebApplication1.Data;
+using WebApplication1.Models;
+using WebApplication1.Repository.Base;
 
 namespace WebApplication1.Areas.admin.Controllers
 {
@@ -10,17 +12,80 @@ namespace WebApplication1.Areas.admin.Controllers
     [Area("admin")]
     public class ProductsController : Controller
     {
-        private readonly AppDbContext _context;
+        private IRepository<Products> _repository;
 
-        public ProductsController(AppDbContext context)
+        public ProductsController(IRepository<Products> repository)
         {
-            _context = context;
+            _repository = repository;
         }
         public async Task<IActionResult> Index()
         {        
+ 
+            return View(await _repository.GetAllAsync());
+        }
 
-            ViewData["Movies"] = await _context.Movies.ToListAsync();
+
+        // get Edit
+        public async Task<IActionResult> Edit(int id)
+        {
+
+            return View(await _repository.FinedbyIdAsync(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public  IActionResult Edit(Products products)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _repository.UpdateOne(products);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(products);
+            }
+        }
+
+        public IActionResult New()
+        {
             return View();
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> New(Products products)
+        {
+            if (ModelState.IsValid)
+            {
+
+                _repository.AddOne(products);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(products);
+            }
+
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+
+            return View(await _repository.FinedbyIdAsync(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(Products products)
+        {
+
+           
+                _repository.DeleteOne(products);
+                return RedirectToAction("Index");
+           
+            
         }
     }
 }

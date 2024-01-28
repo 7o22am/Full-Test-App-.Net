@@ -33,6 +33,8 @@ namespace WebApplication1.Repository
             return await Context.Set<T>().ToListAsync();
         }
 
+       
+
         /////////////////////////////////
         public void AddOne(T myItem)
         {
@@ -69,5 +71,7 @@ namespace WebApplication1.Repository
             Context.Set<T>().RemoveRange(myList);
             Context.SaveChanges();
         }
+
+       
     }
 }

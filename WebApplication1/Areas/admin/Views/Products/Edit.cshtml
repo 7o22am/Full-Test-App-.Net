@@ -1,0 +1,67 @@
+﻿@using WebApplication1.Areas.admin.Models;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model  Products
+
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4 m-5">
+        <div class="row pb-2">
+            <h2 class="text-primary "> Add New Item</h2>
+
+        </div>
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class=" ">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="color"></label>
+            <input asp-for="color" class="form-control">
+            </input>
+            <span asp-validation-for="color" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="size"></label>
+            <input asp-for="size" class="form-control">
+            </input>
+            <span asp-validation-for="size" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="Quantity"></label>
+            <input asp-for="Quantity" class="form-control">
+            </input>
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+        <div class="mb-4">
+            <label asp-for="CategoryID"></label>
+            <input asp-for="CategoryID" class="form-control">
+            </input>
+            <span asp-validation-for="CategoryID" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Description"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <br />
+        <hr />
+        <button type="submit" class="btn btn-primary">save</button>
+        <a asp-action="Index" asp-controller="Products" class="btn btn-info">back to Products</a>
+    </div>
+
+
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

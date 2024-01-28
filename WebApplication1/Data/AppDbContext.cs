@@ -33,6 +33,8 @@ namespace WebApplication1.Data
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Movie> Movies { get; set; }
+
+        public DbSet<Products> Products { get; set; }
     }
 
 
