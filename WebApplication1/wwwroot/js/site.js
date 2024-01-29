@@ -1,4 +1,7 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿var items = JSON.parse(localStorage.getItem("items")) || [];
+function addToCart(item) {
+    items.push(item);
+    localStorage.setItem("items", JSON.stringify(items));
+    toastr.success('Item add successfully in Cart', 'success');
 
-// Write your JavaScript code.
+}

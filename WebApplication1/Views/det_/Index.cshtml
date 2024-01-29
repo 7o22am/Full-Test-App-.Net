@@ -7,15 +7,15 @@
  
 <div class="continer">
     <div class="row p-4 m-4">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-3">
             <img src="@($"{img}{@apiResponse.poster_path}")" alt="" class="w-75" />
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mt-5">
             <h4>@apiResponse.Title </h4>
             <p>@apiResponse.Overview </p>
-            <p>@apiResponse.release_date  </p>
-            <p>@apiResponse.vote_count </p>
+            <p>@apiResponse.release_date  </p>     
+            <p>@apiResponse.vote_count votes &nbsp; &nbsp; @apiResponse.vote_average average</p>
 
         </div>
     </div>

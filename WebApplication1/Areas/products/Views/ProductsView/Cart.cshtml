@@ -1,0 +1,40 @@
+﻿@using WebApplication1.Areas.admin.Models;
+@model IEnumerable<Products>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Cart";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div id="itemListContainer"></div>
+
+
+
+<script>
+    // Retrieve the items from local storage
+    var items = JSON.parse(localStorage.getItem("items")) || [];
+
+    // Get the container element
+    var container = document.getElementById("itemListContainer");
+
+    // Create a list element
+    var itemList = document.createElement("ul");
+
+    // Iterate over the items and create list items
+    items.forEach(function (item) {
+        var listItem = document.createElement("li");
+        listItem.textContent = item;
+        itemList.appendChild(listItem);
+    });
+
+    // Append the list to the container element
+    container.appendChild(itemList);
+</script>
+
+
+
+
+
+
+ 

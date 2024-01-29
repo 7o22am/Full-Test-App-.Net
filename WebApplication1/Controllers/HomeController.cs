@@ -34,9 +34,6 @@ namespace WebApplication1.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
- 
-
         public async Task<IActionResult> Index(int id)
         {
 
@@ -66,6 +63,10 @@ namespace WebApplication1.Controllers
             return View();
         }
  
-   
+                   public IActionResult MoviesStory() {
+            return View();
+        
+                   }
+
     }
 }

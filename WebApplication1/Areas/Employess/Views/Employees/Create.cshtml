@@ -5,52 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>Employees</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmpName" class="control-label"></label>
-                <input asp-for="EmpName" class="form-control" />
-                <span asp-validation-for="EmpName" class="text-danger"></span>
+<div class="container-fluid vert ">
+    <div class="row">
+
+        <div class="col-md-2   ">
+            @await Html.PartialAsync("_adminNavcshtml")
+
+
+
+        </div>
+        <div class="col-md-8  mt-5 ">
+            <h1>
+                Create New Employee
+            </h1>
+            <div class="row">
+                <div class="col-md-8">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="EmpName" class="control-label"></label>
+                            <input asp-for="EmpName" class="form-control" />
+                            <span asp-validation-for="EmpName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmpPhone" class="control-label"></label>
+                            <input asp-for="EmpPhone" class="form-control" />
+                            <span asp-validation-for="EmpPhone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmpDescription" class="control-label"></label>
+                            <input asp-for="EmpDescription" class="form-control" />
+                            <span asp-validation-for="EmpDescription" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmpEmail" class="control-label"></label>
+                            <input asp-for="EmpEmail" class="form-control" />
+                            <span asp-validation-for="EmpEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmpAge" class="control-label"></label>
+                            <input asp-for="EmpAge" class="form-control" />
+                            <span asp-validation-for="EmpAge" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmpSalery" class="control-label"></label>
+                            <input asp-for="EmpSalery" class="form-control" />
+                            <span asp-validation-for="EmpSalery" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                             &nbsp;
+                                <a asp-action="Index" class="btn btn-info">Back to List</a>
+                           
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="EmpPhone" class="control-label"></label>
-                <input asp-for="EmpPhone" class="form-control" />
-                <span asp-validation-for="EmpPhone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpDescription" class="control-label"></label>
-                <input asp-for="EmpDescription" class="form-control" />
-                <span asp-validation-for="EmpDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpEmail" class="control-label"></label>
-                <input asp-for="EmpEmail" class="form-control" />
-                <span asp-validation-for="EmpEmail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpAge" class="control-label"></label>
-                <input asp-for="EmpAge" class="form-control" />
-                <span asp-validation-for="EmpAge" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpSalery" class="control-label"></label>
-                <input asp-for="EmpSalery" class="form-control" />
-                <span asp-validation-for="EmpSalery" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+           
+
+
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
