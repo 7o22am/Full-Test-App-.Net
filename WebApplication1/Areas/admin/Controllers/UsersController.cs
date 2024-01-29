@@ -16,10 +16,12 @@ namespace WebApplication1.Areas.admin.Controllers
     public class UsersController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
-
-        public UsersController(UserManager<IdentityUser> userManager)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public UsersController(UserManager<IdentityUser> userManager , RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
+
         }
 
 
@@ -153,5 +155,73 @@ namespace WebApplication1.Areas.admin.Controllers
 
             return View(user);
         }
+
+
+
+
+        // GET: UserController/GetAllUsers
+        // UserController.cs
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _userManager.Users.ToListAsync();
+
+            var userViewModels = new List<UserViewModel>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+
+                var userViewModel = new UserViewModel
+                {
+                    UserId = user.Id,
+                    Username = user.UserName,
+                    Roles = roles.ToList()
+                };
+
+                userViewModels.Add(userViewModel);
+            }
+
+            return View(userViewModels);
+        }
+
+        // GET: UserController/GetUserRoles/{userId}
+
+
+        // POST: UserController/AddRoleToUser/{userId}
+        [HttpPost]
+        public async Task<IActionResult> AddRoleToUser(string userId, string role)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var normalizedRoleName = _roleManager.NormalizeKey(role);
+
+            if (!await _roleManager.RoleExistsAsync(normalizedRoleName))
+            {
+                var newRole = new IdentityRole(normalizedRoleName);
+                var createRoleResult = await _roleManager.CreateAsync(newRole);
+                if (!createRoleResult.Succeeded)
+                {
+                    ModelState.AddModelError(string.Empty, "Failed to create role.");
+                    // Handle the error as needed
+                    return RedirectToAction("GetAllUsers");
+                }
+            }
+
+            var result = await _userManager.AddToRoleAsync(user, normalizedRoleName);
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, "Failed to add role to user.");
+                // Handle the error as needed
+            }
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

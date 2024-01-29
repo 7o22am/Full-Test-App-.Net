@@ -9,17 +9,13 @@ using WebApplication1.Areas.admin.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
-
-
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("MyConnection")));
 builder.Services.AddHttpClient();
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 
+ 
 builder.Services.AddTransient(typeof(IRepository<>), typeof(MainRepository<>));
 
 builder.Services.AddTransient<IEmailSender, ClsEmailConf>();
@@ -41,7 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+ 
 app.UseAuthorization();
 
 app.MapControllerRoute(

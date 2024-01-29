@@ -14,19 +14,13 @@
 <div class="container-fluid vert ">
     <div class="row">
 
-        <div class="col-md-2   ">
+        <div class="col-md-2">
             @await Html.PartialAsync("_adminNavcshtml")
         </div>
-        <div class="col-md-9 offset-1 ">
-
-
-
-            <div class="container my-5 ">
-
+        <div class="col-md-10 ">
+            <div class="container-fluid my-5  ">
                 <partial name="_notfy" />
-                <div class="container">
-
-
+                <div class="container-fluid m-0   ">
                     <div class="row">
                         <div class="col-md-6">
                             <h2>Products </h2>
@@ -38,36 +32,32 @@
                                 Add New Prodects
                             </a>
                         </div>
-
                     </div>
                 </div>
-
-
-
-                <table class="table m-5">
+                <table class="table table-striped   p-0  ">
                     <thead>
                         <tr>
-                            <th class="col">
+                            <th scope="col">
                                 photo
                             </th>
-                            <th class="col">
+                            <th scope="col">
                                 Name
                             </th>
-                            <th class="col">
+                            <th scope="col">
                                 Description
                             </th>
-                            <th class="col">
+                            <th scope="col">
                                 Title
                             </th>
-                            <th class="col">
+                            <th scope="col">
                                 Category
                             </th>
 
-                            <th class="col">
+                            <th scope="col">
                                 CreatedDate
                             </th>
 
-                            <th class="col">
+                            <th scope="col">
                                 Actions
                             </th>
                         </tr>

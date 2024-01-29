@@ -38,13 +38,15 @@ a {
 
 .sidebar {
     margin: 0;
-    margin-top:30px;
+    margin-top: 30px;
     padding: 0;
-    width: 200px;
+ 
+    width: auto;
     background-color: #f1f1f1;
-  
-    height: auto;
-    // overflow: auto;
+    /*  position :fixed ;*/
+    height: 400px;
+    overflow: auto;
+    align-content: center;
 }
 
     /* Sidebar links */
@@ -66,3 +68,8 @@ a {
             background-color: #555;
             color: white;
         }
+
+    .sidebar kk {
+        background-color: #555;
+        color: white;
+    }

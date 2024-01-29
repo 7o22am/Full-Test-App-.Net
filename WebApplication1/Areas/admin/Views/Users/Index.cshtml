@@ -22,9 +22,11 @@
                 </div>
                 <div class="col-6 text-end">
                     <a asp-area="admin" asp-controller="Users" asp-action="New" class="btn btn-primary">
-                        <i class="bi bi-plus"></i> &nbsp; Add New User
+                        Add New User &nbsp;<i class="bi bi-plus"></i>
                     </a>
-
+                    <a asp-controller="Users" asp-action="GetAllUsers" class="btn btn-primary">
+                        Manage Users  &nbsp; <i class="bi bi-people"></i>
+                    </a>
                 </div>
             </div>
          
@@ -57,6 +59,8 @@
                                 <a asp-controller="Users" asp-action="Delete" asp-route-Id="@user.Id" class="btn btn-sm btn-danger">
                                     <i class="bi bi-trash3"></i>
                                 </a>
+                        
+                              
                             </td>
 
                             <!-- Add more columns as needed -->

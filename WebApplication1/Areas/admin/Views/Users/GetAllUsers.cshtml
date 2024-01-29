@@ -1,0 +1,38 @@
+﻿ @using WebApplication1.Areas.admin.Models;
+@using Microsoft.AspNetCore.Identity;
+@model List<UserViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h1>All Users</h1>
+
+<table class="table m-5">
+    <tr>
+        <th>Username</th>
+        <th>Roles</th>
+        <th>Add Role</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Username</td>
+            <td>
+                @foreach (var role in user.Roles)
+                {
+                    <span>@role</span>
+                }
+            </td>
+            <td>
+                <form asp-controller="Users" asp-action="AddRoleToUser" method="post">
+                    <input type="hidden" name="userId" value="@user.UserId" />
+                    <input type="text" name="role" required />
+                    <input type="submit" value="Add Role" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
