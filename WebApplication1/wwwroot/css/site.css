@@ -162,3 +162,19 @@ a {
 }
 
 
+/*  filter */
+
+
+.collapsible-button {
+    background-color: #f5f5f5;
+    border: none;  
+    cursor: pointer;
+    padding: 0.8rem;
+    text-align: left;
+    width: 100%;
+}
+
+
+.collapsible-content {
+    display: none;
+}

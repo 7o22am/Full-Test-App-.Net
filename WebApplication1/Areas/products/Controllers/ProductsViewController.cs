@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Core.Types;
 using WebApplication1.Areas.admin.Models;
+using WebApplication1.Areas.products.Models;
 using WebApplication1.Repository.Base;
+using static NuGet.Packaging.PackagingConstants;
 
 namespace WebApplication1.Areas.products.Controllers
 {
@@ -18,7 +20,7 @@ namespace WebApplication1.Areas.products.Controllers
         }
         public async Task<IActionResult> Index()
         {
-
+          
             return View(await _repository.GetAllAsync());
         }
 
@@ -38,11 +40,30 @@ namespace WebApplication1.Areas.products.Controllers
 
         public async Task<IActionResult> Cart()
         {
-
-        
-
             return View();
         }
 
+   
+
+
+        [HttpPost("Filter")]
+        public IActionResult Filter(FilterViewModel filters)
+        {
+              ViewData["filterData"] =   filters;
+            Console.WriteLine("sssssssssssssssssss" + filters.minPrice);
+            Console.WriteLine("sssssssssssssssssss" + filters.maxPrice);
+            return View("Filter");
+        }
+
+        public IActionResult Filter()
+        {
+
+              var filterData = TempData["filterData"] as FilterViewModel;
+            Console.WriteLine(filterData);
+            return View(filterData);
+
+        }
+
     }
+
 }

@@ -1,73 +1,189 @@
 ﻿@using WebApplication1.Areas.admin.Models;
 @model IEnumerable<Products>
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+ 
+ 
 
+ 
 }
-<div id="carouselExampleAutoplaying" class="carousel slide  m-5  " data-bs-ride="carousel" style="height: 50%;">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="~/images/banner.webp" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="~/images/banner1.webp" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="~/images/banner2.webp" class="d-block w-100" alt="...">
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+ 
+ 
+ <div class="container-fluid mt-5">
+     <div class="row">
+        <div class="col-md-2 mt-5">
+            <div class="filter">
+                <h2 class="my-3" style="text-align: center;"> <i class="bi bi-funnel"></i> Filters</h2>
 
 
 
-@if (true)
-{
-    <div class="container-fluid">
-        <div class="row">
-            @foreach (var item in Model)
-           {           
-                    
-                <div class="col-md-3 col-sm-6  ">
-                    <div class="card   border-0">
-                        <a asp-controller="ProductsView" asp-area="products" asp-action="Details" asp-route-Id="@item.Id">
-                            <img src="~/images/man_cat.webp" style= "" class="card-img-top" />
-                        </a>
-                        <div class="card-body  product-card__info    ">
-                            <h5 class="p-0 m-0">@item.Name</h5>
-                            <p class="p-0 m-0 two-line-title">@item.Description</p>
-                            <div class="my-4">
-                                <a onclick="addToCart('@item.Id')" class="my-5">
-                                    <div class="btn btn-dark w-100">Add To Cart</div>
-                                    <partial name="_notfy" />
-                                </a>
-                            </div>
-                            
+
+                <div class="collapsible my-3">
+                    <button class="collapsible-button">Color</button>
+                    <div class="collapsible-content">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Red" name="color" id="color_Red">
+                            <label class="form-check-label" for="color_Red">Red</label>
                         </div>
-                        <div class="vote position-absolute end-0 top-0 bg-opacity-50 text-white rounded-start p-2">@item.Quantity</div>
-                       
-                       
-                       @*  <div style="text-align: center; margin-top: 1rem;">
-                          
-                        </div> *@
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Blue" name="color" id="color_Blue">
+                            <label class="form-check-label" for="color_Blue">Blue</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Yellow" name="color" id="color_Yellow">
+                            <label class="form-check-label" for="color_Yellow">Yellow</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Black" name="color" id="color_Black">
+                            <label class="form-check-label" for="color_Black">Black</label>
+                        </div>
+                        <!-- Add more color options here -->
+                    </div>
+                </div>
+
+                <div class="collapsible my-3">
+                    <button class="collapsible-button">Size</button>
+                  
+                    <div class="collapsible-content">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="S" name="size" id="size_S">
+                            <label class="form-check-label" for="size_S">S</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="M" name="size" id="size_M">
+                            <label class="form-check-label" for="size_M">M</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="L" name="size" id="size_L">
+                            <label class="form-check-label" for="size_L">L</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="XL" name="size" id="size_XL">
+                            <label class="form-check-label" for="size_XL">XL</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="XXL" name="size" id="size_XXL">
+                            <label class="form-check-label" for="size_XXL">XXL</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapsible my-3">
+                    <button class="collapsible-button">Price</button>
+                    <div class="collapsible-content">
+                        <div class="form-group">
+                            <label for="minPrice">Min Price:</label>
+                            <input type="number" class="form-control" id="minPrice">
+                        </div>
+                        <div class="form-group">
+                            <label for="maxPrice">Max Price:</label>
+                            <input type="number" class="form-control" id="maxPrice">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="filterButton" class="btn btn-success"  >  Filter 
+                   
+                </button>
+
+            </div>
+
+         </div>
+        <div class="col-md-10 mt-5">
+            @if (true)
+            {
+                <div class="container-fluid">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-md-3 col-sm-6  ">
+                                <div class="card   border-0">
+                                    <a asp-controller="ProductsView" asp-area="products" asp-action="Details" asp-route-Id="@item.Id">
+                                        <img src="~/images/man_cat.webp" style="" class="card-img-top" />
+                                    </a>
+                                    <div class="card-body  product-card__info    ">
+                                        <h5 class="p-0 m-0">@item.Name</h5>
+                                        <p class="p-0 m-0 two-line-title">@item.Price EGY</p>
+                                        <div class="my-4">
+                                            <a onclick="addToCart('@item.Id')" class="my-5">
+                                                <div class="btn btn-dark w-100">Add To Cart</div>
+                                                <partial name="_notfy" />
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="vote position-absolute end-0 top-0 bg-opacity-50 text-white rounded-start p-2">@item.Quantity</div>
+
+
+                                    @*  <div style="text-align: center; margin-top: 1rem;">
+
+                            </div> *@
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             }
+            else
+            {
+                <p>No data available.</p>
+            }
         </div>
-    </div>
-}
-else
-{
-    <p>No data available.</p>
-}
+       
+
+
+     </div>
+ </div>
 
  
+<script>
+    $(document).ready(function () {
+        $('.collapsible-button').click(function () {
+            $(this).next('.collapsible-content').slideToggle();
+        });
+
+        $('#filterButton').click(function () {
+            var selectedColors = $('input[name="color"]:checked').map(function () {
+                return this.value;
+            }).get();
+
+            var selectedSizes = $('input[name="size"]:checked').map(function () {
+                return this.value;
+            }).get();
+
+            var xminPrice = $('#minPrice').val();
+            var xmaxPrice = $('#maxPrice').val();
+ 
+
+            // Create the data object to send to the controller
+            var data = {
+                colors: selectedColors,
+                sizes: selectedSizes,
+                minPrice: xminPrice,
+                 maxPrice: xmaxPrice
+            };
+            var url = '@Url.Action("Filter", "ProductsView", new { area = "products" })';
+            // Make an AJAX request to the controller
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (result) {
+                    alert(JSON.stringify(data))
+                    // Handle the response from the controller
+                    console.log("ok"  +result);
+                    // Perform any necessary UI updates based on the response
+                },
+                error: function (error) {
+                    // Handle the error
+                    console.log("Xzxzxzxzxzx"+error);
+                }
+            });
+        });
+    });
+</script>

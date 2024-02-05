@@ -28,7 +28,6 @@
     <Folder Include="Areas\admin\Data\" />
     <Folder Include="Areas\Employess\Data\" />
     <Folder Include="Areas\products\Data\" />
-    <Folder Include="Areas\products\Models\" />
     <Folder Include="Views\Movies_Story\" />
   </ItemGroup>
 

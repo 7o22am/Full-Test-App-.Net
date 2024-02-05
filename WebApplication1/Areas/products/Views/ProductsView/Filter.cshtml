@@ -1,0 +1,16 @@
+﻿@using WebApplication1.Areas.products.Models
+@model FilterViewModel
+
+@if (Model != null)
+{
+    <h1>Filter Result</h1>
+    <p>Selected colors: @string.Join(", ", Model.colors)</p>
+    <p>Selected sizes: @string.Join(", ", Model.sizes)</p>
+    <p>Min price: @Model.minPrice</p>
+    <p>Max price: @Model.maxPrice</p>
+}
+else
+{
+    <h1>No Filter Data</h1>
+    <p>No filter data available.</p>
+}
