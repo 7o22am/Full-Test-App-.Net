@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using WebApplication1.Areas.admin.Models;
 using WebApplication1.Data;
+using WebApplication1.Migrations;
+using WebApplication1.Models;
 using WebApplication1.Repository.Base;
 
 namespace WebApplication1.Repository
@@ -17,6 +20,8 @@ namespace WebApplication1.Repository
 
             return Context.Set<T>().Find(id);
         }
+
+       
 
         public IEnumerable<T> GetAll()
         {
@@ -72,6 +77,6 @@ namespace WebApplication1.Repository
             Context.SaveChanges();
         }
 
-       
+        
     }
 }

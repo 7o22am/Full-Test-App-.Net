@@ -37,8 +37,9 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th  >
-                                photo
+                           
+                            <th>
+                                Image
                             </th>
                             <th  >
                                 Name
@@ -66,8 +67,9 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                                
                                 <td>
-                                    <img src="~/images/12.jpeg" style="width:48px" class="img-thumbnail" />
+                                    <img src="~/images/@item.ImgPath" style="width:48px" class="img-thumbnail" />
                                 </td>
                                 <td>
                                     @item.Name
@@ -85,6 +87,9 @@
 
                                 <td>
                                     @item.CreatedDate
+                                </td>
+                                <td>
+                                    @item.ImgPath
                                 </td>
                                 <td>
                                     <a asp-controller="Products" asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-sm btn-info">

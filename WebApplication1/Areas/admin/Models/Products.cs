@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using WebApplication1.Models;
 
 namespace WebApplication1.Areas.admin.Models
 {
@@ -19,11 +22,18 @@ namespace WebApplication1.Areas.admin.Models
         public string size { get; set; }
         [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
-        [Required]
+         
+        //[DisplayName("Category")]
+        //[ForeignKey("ProCategorys")]
+        //[Required(ErrorMessage = "categoryId is required.")]
         public string CategoryID { get; set; }
+        //public ProCategorys? Category { get; set; }
         [Required]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 
+        public string? ImgPath { get; set; }
 
+        [NotMapped]
+        public IFormFile clientFile { get; set; }
     }
 }

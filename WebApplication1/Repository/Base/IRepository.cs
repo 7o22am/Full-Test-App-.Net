@@ -1,9 +1,12 @@
-﻿namespace WebApplication1.Repository.Base
+﻿using WebApplication1.Areas.admin.Models;
+
+namespace WebApplication1.Repository.Base
 {
     public interface IRepository<T> where T : class 
     {
          T FinedbyId(int id);
          IEnumerable<T> GetAll();
+       
 
         Task< T >FinedbyIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
